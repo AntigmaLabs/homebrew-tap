@@ -9,7 +9,7 @@ class Ante < Formula
     if OS.mac?
       if Hardware::CPU.arm?
         url "https://github.com/#{repo}/releases/download/v#{version}/ante-v#{version}-Darwin-arm64.tar.gz"
-        sha256 "ed493329d7977167aba30901b49260c117c3ae944de5aa2a5e91d7af8b5ffd4b"
+        sha256 "fb0db4232c4dded77adc3a46a76b5b284c8ebb00473cb3f052fc21703528818f"
       else
         url "https://github.com/#{repo}/releases/download/v#{version}/ante-v#{version}-Darwin-x86_64.tar.gz"
         # sha256 "THE_HASH_FROM_YOUR_X86_64_RELEASE"
