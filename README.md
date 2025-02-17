@@ -12,6 +12,7 @@ brew tap AntigmaLabs/homebrew-tap
 
 ## Install
 ```sh
+brew update
 brew install ante
 ```
 
