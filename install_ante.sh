@@ -62,13 +62,13 @@ rm -rf "$TMP_DIR"
 
 # Installation check
 if command -v ante &>/dev/null; then
-    echo -e "\n🎉 \033[1;32mAnte installed successfully!\033[0m 🎉"
+    echo "\n🎉 \033[1;32mAnte installed successfully!\033[0m 🎉"
     ante --version
 else
     echo "❌ Ante installation failed!"
     exit 1
 fi
 
-echo -e "\n=============================================="
+echo "\n=============================================="
 echo "✨ Installation process completed! ✨"
 echo "=============================================="
