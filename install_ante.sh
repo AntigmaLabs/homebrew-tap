@@ -2,6 +2,7 @@
 
 INSTALL_DIR="/usr/local/bin"
 TMP_DIR=$(mktemp -d)
+OS="$(uname -s)"
 
 echo "=============================================="
 echo "🚀 Initiating Ante Binary Installation 🚀"
@@ -29,18 +30,22 @@ fi
 GH_USER=$(gh api user | jq -r '.login')
 echo "🔹 Logged in as: \033[1;32m$GH_USER\033[0m"
 
-# Check user access permissions
-TEAM_API="organizations/173536004/team/12833132/members/$GH_USER"
-if gh api "$TEAM_API" &>/dev/null; then
-    echo "✅ User authorized with AntigmaLabs!"
-else
-    echo "🚫 \033[1;31mAccess denied:\033[0m Please contact @AntigmaLabs for permission."
-    exit 1
-fi
-
 # Fetch the latest Ante release URL
-RELEASE_API="repos/AntigmaLabs/homebrew-tap/releases/latest"
-browser_download_url=$(gh api "$RELEASE_API" | jq -r '.assets[] | select(.name | match("ante")) | .browser_download_url')
+RELEASE_API="repos/AntigmaLabs/node/releases/latest"
+case "$OS" in
+  Darwin)
+    echo "Detected macOS"
+    browser_download_url=$(gh api "$RELEASE_API" | jq -r '.assets[] | select(.name | match("antex-mac")) | .browser_download_url')
+    ;;
+  Linux)
+    echo "Detected Linux"
+    browser_download_url=$(gh api "$RELEASE_API" | jq -r '.assets[] | select(.name | match("antex-linux")) | .browser_download_url')
+    ;;
+  *)
+    echo "Unsupported OS: $OS"
+    exit 1
+    ;;
+esac
 
 if [ -z "$browser_download_url" ]; then
     echo "❌ No Ante release found."
