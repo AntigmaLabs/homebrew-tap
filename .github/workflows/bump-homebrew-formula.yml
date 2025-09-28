@@ -1,0 +1,30 @@
+name: Bump Homebrew formula (binary URL)
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Compose download URL
+        id: meta
+        run: |
+          TAG="${{ github.event.release.tag_name }}"
+          echo "url=https://github.com/AntigmaLabs/test_release/releases/download/${TAG}/ante" >> $GITHUB_OUTPUT
+
+      - name: Bump formula in tap
+        uses: mislav/bump-homebrew-formula-action@v3
+        with:
+          formula-name: ante
+          homebrew-tap: AntigmaLabs/homebrew-tap
+          base-branch: main
+          download-url: ${{ steps.meta.outputs.url }}
+          commit-message: |
+            {{formulaName}} {{version}} (binary)
+            Auto-bumped to ${{ steps.meta.outputs.url }}
+        env:
+          COMMITTER_TOKEN: ${{ secrets.GIT_TOKEN }}

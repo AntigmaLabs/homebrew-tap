@@ -22,6 +22,7 @@ class Ante < Formula
     end
   
     def install
+      chmod 0755, "ante"
       bin.install "ante"
     end
   
