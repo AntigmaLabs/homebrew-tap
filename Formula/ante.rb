@@ -1,32 +1,41 @@
 class Ante < Formula
-    desc "Building substrate for self-organizing intelligence"
-    homepage "https://github.com/AntigmaLabs"
-    version "0.1.7" # Match your current version
-  
-    # Add repo name variable
-    repo = "AntigmaLabs/homebrew-tap"
+  desc "Building substrate for self-organizing intelligence"
+  homepage "https://github.com/AntigmaLabs"
+  version "0.1.8" # Match your current version
 
-    if OS.mac?
-      if Hardware::CPU.arm?
-        url "https://github.com/AntigmaLabs/test_release/releases/download/v0.1.7/ante"
-        sha256 "a5cb34c8cf5d84119e7471183a59fe4139e02e0f44cbc7ba4243c8da849e12e7"
-      else
-        url "https://github.com/#{repo}/releases/download/v#{version}/ante-v#{version}-Darwin-x86_64.tar.gz"
-        # sha256 "THE_HASH_FROM_YOUR_X86_64_RELEASE"
-      end
-    elsif OS.linux?
-      if Hardware::CPU.intel?
-        url "https://github.com/#{repo}/releases/download/v#{version}/ante-v#{version}-Linux-x86_64.tar.gz"
-        # sha256 "THE_HASH_FROM_YOUR_LINUX_RELEASE"
-      end
+  # Add repo name variable
+  repo = "AntigmaLabs/homebrew-tap"
+
+  if OS.mac?
+    if Hardware::CPU.arm?
+      url "https://github.com/#{repo}/releases/download/v#{version}/ante-aarch64-apple-darwin"
+      sha256 "REPLACE_WITH_ACTUAL_SHA256_FOR_MACOS_ARM64"
+    else
+      odie "ante is not currently supported on macOS x86_64 (Intel). Only Apple Silicon (ARM64) is supported."
     end
-  
-    def install
-      chmod 0755, "ante"
-      bin.install "ante"
+  elsif OS.linux?
+    if Hardware::CPU.intel?
+      url "https://github.com/#{repo}/releases/download/v#{version}/ante-x86_64-unknown-linux-gnu"
+      sha256 "REPLACE_WITH_ACTUAL_SHA256_FOR_LINUX_X86_64"
+    else
+      odie "ante is not currently supported on Linux ARM. Only x86_64 is supported."
     end
-  
-    test do
-      system "#{bin}/ante", "--version"
-    end
+  else
+    odie "ante is only supported on macOS (Apple Silicon) and Linux (x86_64)."
   end
+
+  def install
+    # The downloaded file is the binary itself, rename it to 'ante'
+    binary_name = if OS.mac? && Hardware::CPU.arm?
+                    "ante-aarch64-apple-darwin"
+                  elsif OS.linux?
+                    "ante-x86_64-unknown-linux-gnu"
+                  end
+
+    bin.install binary_name => "ante"
+  end
+
+  test do
+    system "#{bin}/ante", "--version"
+  end
+end
