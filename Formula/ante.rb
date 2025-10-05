@@ -2,9 +2,9 @@ class Ante < Formula
     desc "Building substrate for self-organizing intelligence"
     homepage "https://github.com/AntigmaLabs"
 
-    url "https://github.com/AntigmaLabs/test_release/releases/download/v0.2.1/ante-v0.2.1.tar.gz",
+    url "https://github.com/AntigmaLabs/test_release/releases/download/v0.2.2/ante-v0.2.2.tar.gz",
       using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "aedf97f4d584f17ccae9495207a5d7206b87f8acbfd021e311989b6dcb68bd51" 
+    sha256 "8dc7ac526794cbf220e0bd1a8621ebb5ea9851ef99af03fc53b12c03427ededb" 
 
     def install
       if OS.mac? && Hardware::CPU.arm?
