@@ -1,15 +1,15 @@
 class Ante < Formula
   desc "Building substrate for self-organizing intelligence"
   homepage "https://github.com/AntigmaLabs"
-  version "0.1.8" # Match your current version
+  version "0.2.0" # Match your current version
 
   # Add repo name variable
   repo = "AntigmaLabs/homebrew-tap"
 
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/#{repo}/releases/download/v#{version}/ante-aarch64-apple-darwin"
-      sha256 "REPLACE_WITH_ACTUAL_SHA256_FOR_MACOS_ARM64"
+      url "https://github.com/AntigmaLabs/test_release/releases/download/v0.2.0/ante-aarch64-apple-darwin"
+      sha256 "5e6554f6beb0237d74c6b2565fb5dbd29a81326fae9698518d13f668331bf016"
     else
       odie "ante is not currently supported on macOS x86_64 (Intel). Only Apple Silicon (ARM64) is supported."
     end
