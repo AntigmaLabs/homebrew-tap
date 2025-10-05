@@ -1,3 +1,4 @@
+require_relative "lib/custom_download_strategy"
 class Ante < Formula
     desc "Building substrate for self-organizing intelligence"
     homepage "https://github.com/AntigmaLabs"
