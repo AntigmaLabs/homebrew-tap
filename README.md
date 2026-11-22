@@ -1,26 +1,21 @@
-# homebrew-tap
-binary distribution
+# AntigmaLabs Homebrew Tap
 
-> ⚠️ **NOTE**: The brew tap step is required only once.
-
-## Using Homebrew
-- make sure you have [Homebrew](https://brew.sh/) installed
-- add the tap
-```sh
-brew tap AntigmaLabs/homebrew-tap
-```
+Official Homebrew tap for [Ante](https://github.com/AntigmaLabs/ante).
 
 ## Install
+
 ```sh
-brew update
-brew install ante
+brew install antigmalabs/tap/ante
+```
+
+## Upgrade
+
+```sh
+brew upgrade antigmalabs/tap/ante
 ```
 
 ## Uninstall
+
 ```sh
 brew uninstall ante
-```
-## Run
-```sh
-ante
 ```
