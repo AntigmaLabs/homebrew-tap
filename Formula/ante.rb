@@ -5,27 +5,29 @@
 class Ante < Formula
   desc "Terminal-based AI agent system"
   homepage "https://github.com/AntigmaLabs/ante"
-  version "0.3.8"
+  version "0.3.9"
+
+  user_agent = [HOMEBREW_USER_AGENT_CURL, ENV["HOMEBREW_ANTE_UPDATER"]].compact.join(" ")
 
   on_macos do
     on_arm do
-      url "https://download.ante.run/releases/v0.3.8/ante-v0.3.8-darwin-arm64.tar.gz"
-      sha256 "d25014411d877269e4f2fb7557f9d1a134b9efc1deacf153bd4a5d02fce42fe5"
+      url "https://download.ante.run/releases/v0.3.9/ante-v0.3.9-darwin-arm64.tar.gz", user_agent: user_agent
+      sha256 "d24f838b23c9484da341abfc1332cb5284836b548c9afc015eb74414f8f7215d"
     end
     on_intel do
-      url "https://download.ante.run/releases/v0.3.8/ante-v0.3.8-darwin-x86_64.tar.gz"
-      sha256 "76499663c6dcde427fa06e90f13cfa91cfd3e4802f478a79ccbeef658b857922"
+      url "https://download.ante.run/releases/v0.3.9/ante-v0.3.9-darwin-x86_64.tar.gz", user_agent: user_agent
+      sha256 "2b1acd3e8e2772458580fb860a9e6940f40ff42c9a62398325931aa7ed63f40f"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://download.ante.run/releases/v0.3.8/ante-v0.3.8-linux-arm64-musl.tar.gz"
-      sha256 "f68ce33e03c775a2b5128f9ecf3113df833dd13925c0368dfb935aa4cd8a4b29"
+      url "https://download.ante.run/releases/v0.3.9/ante-v0.3.9-linux-arm64-musl.tar.gz", user_agent: user_agent
+      sha256 "9cef8c3248c6e3935b997f31c085226d30e12459262f3b5666c1b6b3942e1212"
     end
     on_intel do
-      url "https://download.ante.run/releases/v0.3.8/ante-v0.3.8-linux-x86_64-musl.tar.gz"
-      sha256 "3dc24f3d1502179bc64df28bca8fed655b44e84b92c766fb1bbba159f7de9c20"
+      url "https://download.ante.run/releases/v0.3.9/ante-v0.3.9-linux-x86_64-musl.tar.gz", user_agent: user_agent
+      sha256 "359a54fe35a4d4b502b882573d5f4545bf34c02504e8e329d6441e7bd8117c5f"
     end
   end
 
